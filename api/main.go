@@ -25,3 +25,9 @@ func getHello(r *gin.RouterGroup) {
 		ctx.JSON(http.StatusOK, gin.H{"Hello": "World!"})
 	})
 }
+
+func getHelloByName(r *gin.RouterGroup) {
+	r.GET("/hello/:name", func(ctx *gin.Context) {
+		ctx.JSON(http.StatusOK, gin.H{"Hello": ctx.Param("name")})
+	})
+}
