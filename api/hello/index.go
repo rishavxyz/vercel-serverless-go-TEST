@@ -1,15 +1,10 @@
 package handler
 
 import (
-	"github.com/gin-gonic/gin"
+	"fmt"
+	"net/http"
 )
 
-var app = gin.Default()
-
-func GetHello(f func(ctx *gin.Context) (string, error)) gin.HandlerFunc {
-
-	return func(ctx *gin.Context) {
-		name := ctx.Param("name")
-		ctx.JSON(200, gin.H{"Hello": name})
-	}
+func Handler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "<h1>Hello from Go!</h1>")
 }
