@@ -12,6 +12,7 @@ func init() {
 	app = gin.New()
 	r := app.Group("/api")
 	getHello(r)
+	getHelloByName(r)
 }
 
 // vercel handler
