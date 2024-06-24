@@ -8,21 +8,20 @@ import (
 
 var app *gin.Engine
 
-func getHello(r *gin.RouterGroup) {
-	r.GET("/hello/:name", func(ctx *gin.Context) {
-		name := ctx.Param("name")
-		ctx.JSON(http.StatusOK, gin.H{"hello": name})
-	})
-}
-
 func init() {
 	app = gin.New()
 	r := app.Group("/api")
-
 	getHello(r)
 }
 
-// vercel server less injection
+// vercel handler
 func Handler(w http.ResponseWriter, r *http.Request) {
 	app.ServeHTTP(w, r)
+}
+
+// endpoints
+func getHello(r *gin.RouterGroup) {
+	r.GET("/hello", func(ctx *gin.Context) {
+		ctx.JSON(http.StatusOK, gin.H{"Hello": "World!"})
+	})
 }
